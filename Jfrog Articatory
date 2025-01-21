@@ -1,7 +1,38 @@
 *** Jfrog Commands Notes ***
-
 Reference Link For jfrog Setup:- https://www.coachdevops.com/2023/10/install-jfrog-artifactory-on-ubuntu.html
 
+**** EXPLINATION ****
+--------------------------------------------------------------------------
+What is JFrog Artifactory?
+JFrog Artifactory is a tool for storing and managing software packages (called artifacts). 
+Think of it as a central warehouse for all the files and libraries your team uses and creates during software development.
+--------------------------------------------------------------------------
+Example:
+When you're creating a new app, you need various tools and libraries.
+Instead of downloading these every time, you can use Artifactory to store and retrieve them easily.
+---------------------------------------------------------------------------
+Why Use JFrog Artifactory? 
+Store Your Files Safely:
+It’s like a Dropbox for developers where you keep important files like:
+Code libraries
+Build files
+Docker images
+Other dependencies (like npm packages, Python libraries, etc.)
+Organize Files for Easy Access:
+It helps teams find and share files quickly without worrying about manually organizing them.
+Speeds Up Development:
+When developers need the same file repeatedly, Artifactory caches it, so you don’t have to download it from scratch every time.
+Supports Many Types of Files:
+Works with all popular tools and programming languages like:
+Java (Maven, Gradle)
+Node.js (npm)
+Python (PyPI)
+Docker containers, and more.
+Works with CI/CD Tools:
+It integrates with tools like Jenkins, GitHub Actions, and GitLab CI/CD to automatically store and use files during builds and deployments.
+--------------------------------------------------------------------------
+
+************ COMMANDS FOR JFORG SETUP IN AWS EC2 INSTANCE*************
 Pre-requisites:
 VM needs to have at least 4GB RAM, for AWS choose at least medium instance type.
 Default ports 8081 and 8082 needs to be opened. 8081 for Artifactory REST APIs. 8082 for everything else (UI, and all other product’s APIs).
@@ -35,10 +66,10 @@ sudo systemctl start artifactory.service
 8) Check whether Artifactory is running?
 [ sudo systemctl status artifactory.service ]
 
-Press q to quit 
+9) Press q to quit 
 
-You can also check the logs
+10) You can also check the logs
 [ sudo tail -f /var/opt/jfrog/artifactory/log/artifactory-service.log ]
 
-9) Check if service is running locally on 8081 port
+11) Check if service is running locally on 8081 port
     [ curl localhost:8081 ]
