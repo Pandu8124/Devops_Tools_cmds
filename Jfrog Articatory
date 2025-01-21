@@ -1,0 +1,44 @@
+*** Jfrog Commands Notes ***
+
+Reference Link For jfrog Setup:- https://www.coachdevops.com/2023/10/install-jfrog-artifactory-on-ubuntu.html
+
+Pre-requisites:
+VM needs to have at least 4GB RAM, for AWS choose at least medium instance type.
+Default ports 8081 and 8082 needs to be opened. 8081 for Artifactory REST APIs. 8082 for everything else (UI, and all other product’s APIs).
+Change Host Name to Artifactory
+sudo hostnamectl set-hostname Artifactory
+
+1) Update Ubuntu OS
+[ sudo apt update ]
+
+2) Add JFrog Artifactory APT repository
+[ echo "deb https://releases.jfrog.io/artifactory... xenial main" | sudo tee -a /etc/apt/sources.list.d/artifactory.list ]
+
+3) Import repository GPG key by running the following commands
+[ curl -fsSL  https://releases.jfrog.io/artifactory...|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/artifactory.gpg ]
+
+4) Update the package
+[ sudo apt update ]
+
+5) Install Artifactory
+[ sudo apt install jfrog-artifactory-oss -y ]
+
+The above message should confirm Artifactory have been successfully installed.
+Now let us start Artifactory service.
+
+6) Start Artifactory 
+sudo systemctl start artifactory.service
+
+7) Create symbolic link
+[ sudo systemctl enable artifactory.service ]
+
+8) Check whether Artifactory is running?
+[ sudo systemctl status artifactory.service ]
+
+Press q to quit 
+
+You can also check the logs
+[ sudo tail -f /var/opt/jfrog/artifactory/log/artifactory-service.log ]
+
+9) Check if service is running locally on 8081 port
+    [ curl localhost:8081 ]
