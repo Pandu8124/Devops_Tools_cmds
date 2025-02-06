@@ -46,3 +46,6 @@ Install Jenkins:
 6) sudo apt install jenkins
 
  7) Start Jenkins and access it at http://localhost:8080
+
+8) systemctl status jenkins
+
